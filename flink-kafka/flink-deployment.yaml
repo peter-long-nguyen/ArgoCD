@@ -16,7 +16,7 @@ spec:
     spec:
       containers:
         - name: jobmanager
-          image: apache/flink:1.14.0
+          image: apache/flink:latest
           ports:
             - containerPort: 8081  # Flink web UI port
           env:
@@ -42,7 +42,7 @@ spec:
     spec:
       containers:
         - name: taskmanager
-          image: apache/flink:1.14.0
+          image: apache/flink:latest
           args: ["taskmanager"]
           ports:
             - containerPort: 6121  # Flink task manager RPC port
