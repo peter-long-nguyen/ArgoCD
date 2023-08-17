@@ -19,8 +19,11 @@ spec:
           envFrom:
             - configMapRef:
                 name: flink-configmap-jobmanager
+          env:
+            - name: DISABLE_JEMALLOC
+              value: "true"
           ports:
-            - containerPort: 8081 # JobManager web UI port
+            - containerPort: 8081
 
         - name : taskmanager
           imagePullPolicy : Always
@@ -28,6 +31,9 @@ spec:
           envFrom :
             - configMapRef :
                 name : flink-configmap-taskmanager
+          env:
+            - name: DISABLE_JEMALLOC
+              value: "true"
 
 ---
 apiVersion : v1
@@ -45,4 +51,4 @@ kind       : ConfigMap
 metadata   :
   name     : flink-configmap-taskmanager
 data       :
-   conf.yaml             				# TaskManager configuration file
+   conf.yaml
